@@ -1,5 +1,5 @@
 {
-  "projectName": "questionarie",
+  "projectName": "questionnaire",
   "mode": "file-router",
   "typescript": true,
   "tailwind": true,
