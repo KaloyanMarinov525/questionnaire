@@ -3,6 +3,10 @@ import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { Home, Info, Menu, X } from 'lucide-react'
 
+const linkBaseStyles = 'flex items-center gap-3 p-3 rounded-lg transition-colors mb-2'
+const linkInactiveStyles = `${linkBaseStyles} hover:bg-gray-800`
+const linkActiveStyles = `${linkBaseStyles} bg-cyan-600 [&:hover]:bg-cyan-600 [&:focus]:bg-cyan-600`
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -47,10 +51,9 @@ export default function Header() {
           <Link
             to="/"
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            className={linkInactiveStyles}
             activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+              className: linkActiveStyles,
             }}
           >
             <Home size={20} />
@@ -60,10 +63,9 @@ export default function Header() {
           <Link
             to="/about"
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            className={linkInactiveStyles}
             activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+              className: linkActiveStyles,
             }}
           >
             <Info size={20} />
