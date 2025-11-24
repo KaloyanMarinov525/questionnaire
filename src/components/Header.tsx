@@ -12,6 +12,13 @@ export default function Header() {
 
   return (
     <>
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
       <header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
         <button
           onClick={() => setIsOpen(true)}
