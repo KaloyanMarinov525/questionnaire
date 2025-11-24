@@ -1,6 +1,8 @@
+# Questionnaire
+
 Welcome to your new TanStack app!
 
-# Getting Started
+## Getting Started
 
 To run this application:
 
@@ -9,7 +11,7 @@ npm install
 npm run start
 ```
 
-# Building For Production
+## Building For Production
 
 To build this application for production:
 
@@ -41,6 +43,8 @@ npm run check
 
 ## T3Env
 
+🚧 TODO: Set up T3Env for type-safe environment variables
+
 - You can use T3Env to add type safety to your environment variables.
 - Add Environment variables to the `src/env.mjs` file.
 - Use the environment variables in your code.
@@ -54,6 +58,8 @@ console.log(env.VITE_APP_TITLE)
 ```
 
 ## Shadcn
+
+🚧 TODO: Add Shadcn components when needed
 
 Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
 
@@ -124,6 +130,8 @@ The `<TanStackRouterDevtools />` component is not required so you can remove it 
 More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
 
 ## Data Fetching
+
+🚧 TODO: Set up data fetching strategy
 
 There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
 
@@ -239,6 +247,8 @@ You can find out everything you need to know on how to use React-Query in the [R
 
 ## State Management
 
+🚧 TODO: Implement state management if needed
+
 Another common requirement for React applications is state management. There are many options for state management in React. TanStack Store provides a great starting point for your project.
 
 First you need to add TanStack Store as a dependency:
@@ -310,10 +320,10 @@ Once we've created the derived store we can use it in the `App` component just l
 
 You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
 
-# Demo files
+## Demo files
 
 Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
 
-# Learn More
+## Learn More
 
 You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
