@@ -50,7 +50,7 @@ Even though setTimeout is 0ms, the callback waits until the stack is clear becau
       },
       {
         id: 'q2-2',
-        title: 'When a function is called, it\'s pushed onto the stack',
+        title: "When a function is called, it's pushed onto the stack",
         answer: `JavaScript is single-threaded, so it executes one function at a time from the call stack.
 
 Example:
@@ -64,7 +64,7 @@ b();
       },
       {
         id: 'q2-3',
-        title: 'When the function finishes, it\'s popped off the stack',
+        title: "When the function finishes, it's popped off the stack",
         answer: `JavaScript is single-threaded, so it executes one function at a time from the call stack.
 
 Example:
@@ -186,7 +186,8 @@ dog.move(); // Moving...
       },
       {
         id: 'q2-9',
-        title: 'What is the difference between private, protected, and public access modifiers',
+        title:
+          'What is the difference between private, protected, and public access modifiers',
         answer: `● public
   ○ Default in TypeScript/JS classes.
   ○ Members are accessible everywhere (inside and outside the class).
@@ -250,7 +251,8 @@ Benefits:
       },
       {
         id: 'q2-12',
-        title: 'What is the difference between type and interface in TypeScript',
+        title:
+          'What is the difference between type and interface in TypeScript',
         answer: `● interface
   ○ Designed to describe the shape (structure) of objects, classes, or functions.
   ○ Supports declaration merging (you can extend the same interface in multiple places).
@@ -645,7 +647,8 @@ Summary:
       },
       {
         id: 'q3-14',
-        title: 'Give examples of how we use hooks to imitate different lifecycle events',
+        title:
+          'Give examples of how we use hooks to imitate different lifecycle events',
         answer: `ComponentDidMount (run once on mount):
 \`\`\`javascript
 useEffect(() => {
@@ -726,7 +729,8 @@ useMemo does not store state; it memoizes a computed value during render and rec
       },
       {
         id: 'q3-22',
-        title: 'What is the square bracket in both useMemo and useCallback used for',
+        title:
+          'What is the square bracket in both useMemo and useCallback used for',
         answer: `The square brackets are the dependency array. They tell React when to recompute the memoized value (useMemo) or function (useCallback). If a dependency changes, the hook recalculates; if not, it reuses the cached result. An empty array ([]) means it runs only once on mount.`,
         tags: ['Dependency Array', 'useMemo', 'useCallback'],
       },
@@ -794,7 +798,8 @@ const UserListWithLoading = withLoading(UserList);
       },
       {
         id: 'q3-28',
-        title: 'What are Performance hooks: useMemo, useCallback, useTransition, useDeferredValue',
+        title:
+          'What are Performance hooks: useMemo, useCallback, useTransition, useDeferredValue',
         answer: `● useMemo: Memoizes a computed value, recalculates only when dependencies change.
 ● useCallback: Memoizes a function to keep stable references between renders.
 ● useTransition: Marks state updates as non-urgent, allowing React to keep UI responsive.
@@ -803,7 +808,8 @@ const UserListWithLoading = withLoading(UserList);
       },
       {
         id: 'q3-29',
-        title: 'What are Refs & DOM hooks: useRef, useLayoutEffect, useImperativeHandle',
+        title:
+          'What are Refs & DOM hooks: useRef, useLayoutEffect, useImperativeHandle',
         answer: `● useRef: Stores a mutable value that persists across renders, often used for DOM access.
 ● useLayoutEffect: Runs synchronously after all DOM mutations, useful for measurements or DOM adjustments before painting.
 ● useImperativeHandle: Customizes the instance value exposed to parent components when using forwardRef.`,
@@ -842,7 +848,8 @@ Key benefits:
       },
       {
         id: 'q4-3',
-        title: 'Explain routing in React Native and how it differs from React for web',
+        title:
+          'Explain routing in React Native and how it differs from React for web',
         answer: `In React Native, there is no built-in router. Navigation is handled with libraries such as React Navigation or React Native Navigation. These libraries manage navigation stacks, tabs, and drawers similar to native apps. Navigation works with concepts like StackNavigator, TabNavigator, and uses navigation props (navigation.navigate("Screen")).
 
 In React for the web, routing is usually handled by React Router, which maps URLs to components. The browser's address bar and history API are central to web navigation, while in React Native navigation is managed in-app, not via URLs (although deep linking is possible).`,

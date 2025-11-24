@@ -10,7 +10,12 @@ interface SearchParams {
 export const Route = createFileRoute('/categories/$categoryId')({
   component: CategoryPage,
   validateSearch: (search: Record<string, unknown>): SearchParams => ({
-    index: typeof search.index === 'string' ? parseInt(search.index, 10) : (typeof search.index === 'number' ? search.index : 0),
+    index:
+      typeof search.index === 'string'
+        ? parseInt(search.index, 10)
+        : typeof search.index === 'number'
+          ? search.index
+          : 0,
   }),
 })
 
@@ -39,7 +44,10 @@ function CategoryPage() {
     )
   }
 
-  const currentIndex = Math.min(search.index ?? 0, category.questions.length - 1)
+  const currentIndex = Math.min(
+    search.index ?? 0,
+    category.questions.length - 1,
+  )
   const currentQuestion = category.questions[currentIndex]
   const isFirstQuestion = currentIndex === 0
   const isLastQuestion = currentIndex === category.questions.length - 1
@@ -87,7 +95,10 @@ function CategoryPage() {
                 Question {currentIndex + 1} of {category.questions.length}
               </span>
               <span className="text-sm font-medium text-cyan-400">
-                {Math.round(((currentIndex + 1) / category.questions.length) * 100)}%
+                {Math.round(
+                  ((currentIndex + 1) / category.questions.length) * 100,
+                )}
+                %
               </span>
             </div>
             <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
@@ -153,7 +164,8 @@ function CategoryPage() {
                 onClick={() => setIsAnswerExpanded(!isAnswerExpanded)}
                 className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold mb-4 transition-colors cursor-pointer"
               >
-                {isAnswerExpanded ? '▼' : '▶'} {isAnswerExpanded ? 'Hide' : 'Show'} Answer
+                {isAnswerExpanded ? '▼' : '▶'}{' '}
+                {isAnswerExpanded ? 'Hide' : 'Show'} Answer
               </button>
 
               {isAnswerExpanded && (
@@ -202,8 +214,13 @@ function CategoryPage() {
           {/* Category Info */}
           <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
             <p className="text-slate-300">
-              Viewing <span className="font-semibold text-cyan-400">{category.name}</span> •{' '}
-              <span className="font-semibold">{category.questions.length}</span> questions
+              Viewing{' '}
+              <span className="font-semibold text-cyan-400">
+                {category.name}
+              </span>{' '}
+              •{' '}
+              <span className="font-semibold">{category.questions.length}</span>{' '}
+              questions
             </p>
           </div>
         </div>

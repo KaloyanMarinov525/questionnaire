@@ -68,16 +68,21 @@ function App() {
             Senior React Interview Questions
           </h1>
           <p className="mt-4 text-lg text-slate-300">
-            Comprehensive collection of interview questions and answers for React and React Native developers
+            Comprehensive collection of interview questions and answers for
+            React and React Native developers
           </p>
           <div className="mt-8 flex items-center justify-center gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400">{totalQuestions}</div>
+              <div className="text-3xl font-bold text-cyan-400">
+                {totalQuestions}
+              </div>
               <div className="text-sm text-slate-400">Total Questions</div>
             </div>
             <div className="h-12 w-px bg-slate-700"></div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-400">{categories.length}</div>
+              <div className="text-3xl font-bold text-cyan-400">
+                {categories.length}
+              </div>
               <div className="text-sm text-slate-400">Categories</div>
             </div>
           </div>
@@ -107,7 +112,9 @@ function App() {
                   <div
                     className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${category.color} mb-4`}
                   >
-                    <span className="text-lg font-bold text-white">{category.count}</span>
+                    <span className="text-lg font-bold text-white">
+                      {category.count}
+                    </span>
                   </div>
 
                   <h3 className="text-lg font-semibold text-white mb-2">
@@ -131,7 +138,8 @@ function App() {
       <div className="px-4 py-12 sm:px-6 lg:px-8 border-t border-slate-700">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-slate-400 mb-6">
-            Want to learn more about this collection and how to use it effectively?
+            Want to learn more about this collection and how to use it
+            effectively?
           </p>
           <Link
             to="/about"
