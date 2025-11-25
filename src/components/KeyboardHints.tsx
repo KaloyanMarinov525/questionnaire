@@ -1,77 +1,75 @@
-import { useEffect, useState } from 'react'
-import { X } from 'lucide-react'
+import { useState } from 'react'
+import { X, HelpCircle } from 'lucide-react'
 
-export function KeyboardHints() {
+export function KeyboardHintsButton({ isRelevant = true }: { isRelevant?: boolean }) {
   const [isVisible, setIsVisible] = useState(false)
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === '?') {
-        e.preventDefault()
-        setIsVisible((prev) => !prev)
-      }
-      if (e.key === 'Escape') {
-        setIsVisible(false)
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  if (!isRelevant) return null
 
   return (
-    <div
-      className={`fixed bottom-4 right-4 bg-slate-800 border border-slate-700 rounded-lg p-4 text-sm text-slate-300 max-w-xs transition-opacity duration-200 ${
-        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`}
-    >
-      <div className="flex items-center justify-between mb-2">
-        <p className="font-semibold text-slate-200">⌨️ Keyboard Shortcuts</p>
-        <button
+    <>
+      <button
+        onClick={() => setIsVisible(!isVisible)}
+        className="p-2 hover:bg-gray-700 rounded-lg transition-colors cursor-pointer"
+        aria-label="Show keyboard shortcuts"
+        title="Keyboard shortcuts"
+      >
+        <HelpCircle size={20} />
+      </button>
+
+      {isVisible && (
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black/50"
           onClick={() => setIsVisible(false)}
-          className="text-slate-400 hover:text-slate-200 transition-colors"
-          aria-label="Close keyboard hints"
         >
-          <X size={16} />
-        </button>
-      </div>
-      <ul className="space-y-1 text-xs mb-3">
-        <li>
-          <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-2">
-            ←
-          </span>
-          Previous question
-        </li>
-        <li>
-          <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-2">
-            →
-          </span>
-          Next question
-        </li>
-        <li>
-          <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-2">
-            ↑
-          </span>
-          Hide answer
-        </li>
-        <li>
-          <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-2">
-            ↓
-          </span>
-          Show answer
-        </li>
-      </ul>
-      <p className="text-xs text-slate-500 border-t border-slate-700 pt-2 mt-2">
-        Press
-        <span className="font-mono bg-slate-700 px-1.5 py-0.5 rounded mx-1">
-          Ctrl + ?
-        </span>
-        to toggle • Press
-        <span className="font-mono bg-slate-700 px-1.5 py-0.5 rounded mx-1">
-          Esc
-        </span>
-        to close
-      </p>
-    </div>
+          <div
+            className="relative bg-slate-800 border border-slate-700 rounded-lg p-8 text-sm text-slate-300 max-w-sm shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsVisible(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
+              aria-label="Close keyboard hints"
+            >
+              <X size={20} />
+            </button>
+            <div className="mb-6 pr-8">
+              <p className="font-semibold text-slate-200 text-lg">⌨️ Keyboard Shortcuts</p>
+            </div>
+            <ul className="space-y-2 text-xs">
+              <li className="flex items-center">
+                <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-3 min-w-fit">
+                  ←
+                </span>
+                <span>Previous question</span>
+              </li>
+              <li className="flex items-center">
+                <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-3 min-w-fit">
+                  →
+                </span>
+                <span>Next question</span>
+              </li>
+              <li className="flex items-center">
+                <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-3 min-w-fit">
+                  ↑
+                </span>
+                <span>Hide answer</span>
+              </li>
+              <li className="flex items-center">
+                <span className="font-mono bg-slate-700 px-2 py-1 rounded mr-3 min-w-fit">
+                  ↓
+                </span>
+                <span>Show answer</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   )
+}
+
+// For backward compatibility
+export function KeyboardHints() {
+  return <KeyboardHintsButton />
 }

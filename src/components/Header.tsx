@@ -1,7 +1,8 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useLocation } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import { Home, Info, Menu, X } from 'lucide-react'
+import { KeyboardHintsButton } from './KeyboardHints'
 
 const linkBaseStyles =
   'flex items-center gap-3 p-3 rounded-lg transition-colors mb-2'
@@ -10,6 +11,8 @@ const linkActiveStyles = `${linkBaseStyles} bg-cyan-600 [&:hover]:bg-cyan-600 [&
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
+  const isOnCategoryPage = location.pathname.startsWith('/categories/')
 
   return (
     <>
@@ -20,19 +23,22 @@ export default function Header() {
           aria-hidden="true"
         />
       )}
-      <header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="p-2 hover:bg-gray-700 rounded-lg transition-colors cursor-pointer"
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
-        <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/">
-            <img src="/logo192.png" alt="Logo" className="h-10" />
-          </Link>
-        </h1>
+      <header className="p-4 flex items-center justify-between bg-gray-800 text-white shadow-lg">
+        <div className="flex items-center">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="p-2 hover:bg-gray-700 rounded-lg transition-colors cursor-pointer"
+            aria-label="Open menu"
+          >
+            <Menu size={24} />
+          </button>
+          <h1 className="ml-4 text-xl font-semibold">
+            <Link to="/">
+              <img src="/logo192.png" alt="Logo" className="h-10" />
+            </Link>
+          </h1>
+        </div>
+        <KeyboardHintsButton isRelevant={isOnCategoryPage} />
       </header>
 
       <aside

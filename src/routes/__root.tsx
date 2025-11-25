@@ -25,3 +25,5 @@ export const Route = createRootRoute({
     </div>
   ),
 })
+
+export { KeyboardHints } from '../components/KeyboardHints'
