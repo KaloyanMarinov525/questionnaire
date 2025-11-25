@@ -1,6 +1,6 @@
 export function KeyboardHints() {
   return (
-    <div className="fixed bottom-4 right-4 bg-slate-800 border border-slate-700 rounded-lg p-4 text-sm text-slate-300 max-w-xs">
+    <div className="hidden 2xl:block fixed bottom-4 right-4 bg-slate-800 border border-slate-700 rounded-lg p-4 text-sm text-slate-300 max-w-xs">
       <p className="font-semibold text-slate-200 mb-2">⌨️ Keyboard Shortcuts</p>
       <ul className="space-y-1 text-xs">
         <li>
