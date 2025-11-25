@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const callback_problems: Question = {
-  id: 'f91e3b07-4716-4a5a-a740-1cf323b849d5',
+  id: createQuestionId('f91e3b07-4716-4a5a-a740-1cf323b849d5'),
   title: `Explain what is wrong with callbacks`,
   answer: `Callbacks work, but they have several drawbacks:
 - Callback Hell: nested callbacks make code deeply indented and hard to read/maintain.

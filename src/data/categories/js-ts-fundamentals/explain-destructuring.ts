@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const explain_destructuring: Question = {
-  id: '8acf0a70-9418-4c3a-b8ec-5cfe5f455ef9',
+  id: createQuestionId('8acf0a70-9418-4c3a-b8ec-5cfe5f455ef9'),
   title: `Explain destructuring`,
   answer: `Destructuring is a JavaScript syntax that lets you unpack values from arrays or properties from objects into variables in a concise way.
 

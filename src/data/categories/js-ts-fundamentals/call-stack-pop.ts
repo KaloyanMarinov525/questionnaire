@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const call_stack_pop: Question = {
-  id: 'ba1a6e16-fb24-4653-81fa-e1b05270dc44',
+  id: createQuestionId('ba1a6e16-fb24-4653-81fa-e1b05270dc44'),
   title: `When the function finishes, it's popped off the stack`,
   answer: `JavaScript is single-threaded, so it executes one function at a time from the call stack.
 

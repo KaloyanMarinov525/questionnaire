@@ -10,12 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as _errorRouteImport } from './routes/__error'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CategoriesCategoryIdRouteImport } from './routes/categories.$categoryId'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const _errorRoute = _errorRouteImport.update({
+  id: '/__error',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -42,6 +47,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/__error': typeof _errorRoute
   '/about': typeof AboutRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
 }
@@ -50,11 +56,12 @@ export interface FileRouteTypes {
   fullPaths: '/' | '/about' | '/categories/$categoryId'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/about' | '/categories/$categoryId'
-  id: '__root__' | '/' | '/about' | '/categories/$categoryId'
+  id: '__root__' | '/' | '/__error' | '/about' | '/categories/$categoryId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  _errorRoute: typeof _errorRoute
   AboutRoute: typeof AboutRoute
   CategoriesCategoryIdRoute: typeof CategoriesCategoryIdRoute
 }
@@ -66,6 +73,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/__error': {
+      id: '/__error'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof _errorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,6 +101,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  _errorRoute: _errorRoute,
   AboutRoute: AboutRoute,
   CategoriesCategoryIdRoute: CategoriesCategoryIdRoute,
 }

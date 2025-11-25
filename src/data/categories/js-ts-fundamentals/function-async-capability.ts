@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const function_async_capability: Question = {
-  id: 'c1a7f943-5baa-43aa-abb4-8e12a71f942b',
+  id: createQuestionId('c1a7f943-5baa-43aa-abb4-8e12a71f942b'),
   title: `Does every function have the ability to become async`,
   answer: `Yes — in JavaScript you can declare any function as async. When you do, it will always return a Promise, even if you return a plain value. Inside an async function you can use await to pause execution until a Promise resolves.
 

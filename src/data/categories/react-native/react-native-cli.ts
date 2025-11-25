@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const react_native_cli: Question = {
-  id: '85c1894a-5e4e-476f-add4-65ff90e9608c',
+  id: createQuestionId('85c1894a-5e4e-476f-add4-65ff90e9608c'),
   title: `Explain React Native CLI`,
   answer: `React Native CLI is the official command-line interface for creating, building, and running React Native apps without Expo. It gives you full control of native projects (Xcode for iOS, Gradle for Android). Unlike Expo's managed workflow, the CLI initializes bare React Native apps where you can install and write your own native modules.
 

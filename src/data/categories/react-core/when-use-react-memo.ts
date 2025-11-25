@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const when_use_react_memo: Question = {
-  id: '551a5ca0-de81-4be4-944c-538089809f62',
+  id: createQuestionId('551a5ca0-de81-4be4-944c-538089809f62'),
   title: `When to use React.memo`,
   answer: `Useful when:
 - A component receives stable props (numbers, strings, memoized objects/functions).

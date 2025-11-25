@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const debug_zustand: Question = {
-  id: '85bcd289-e326-4b12-b793-46eb7c26f8dd',
+  id: createQuestionId('85bcd289-e326-4b12-b793-46eb7c26f8dd'),
   title: `How do you debug Zustand state`,
   answer: `Zustand offers built-in support for debugging and several techniques:
 

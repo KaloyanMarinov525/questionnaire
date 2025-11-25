@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const react_memo_with_hooks: Question = {
-  id: '18e287c1-7e67-4c7f-9af3-282472546317',
+  id: createQuestionId('18e287c1-7e67-4c7f-9af3-282472546317'),
   title: `Why do we combine React.memo with useCallback / useMemo`,
   answer: `Because React.memo does a shallow comparison of props.
 - If you pass objects, arrays, or functions, new references are created on each render.

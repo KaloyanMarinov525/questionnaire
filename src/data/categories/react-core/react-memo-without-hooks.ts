@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const react_memo_without_hooks: Question = {
-  id: '47ea8745-cd1f-4f0a-86e7-c2c342e17819',
+  id: createQuestionId('47ea8745-cd1f-4f0a-86e7-c2c342e17819'),
   title: `Can you use React.memo without useCallback / useMemo`,
   answer: `Yes — you can use React.memo on its own. It works perfectly fine if the props you pass are primitives (string, number, boolean) or stable references that don't change between renders.
 

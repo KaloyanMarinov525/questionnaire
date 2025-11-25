@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const zustand_actions_reducers: Question = {
-  id: '61a56156-3c75-45ce-9f75-4030e5127a12',
+  id: createQuestionId('61a56156-3c75-45ce-9f75-4030e5127a12'),
   title: `Does Zustand have actions and reducers similar to Redux`,
   answer: `Zustand doesn't enforce the actions/reducers pattern like Redux does. Instead:
 - State and actions live together in the same store.

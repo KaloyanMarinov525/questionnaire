@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const hooks_lifecycle_events: Question = {
-  id: '750424ae-cfea-4050-bc67-24796974b808',
+  id: createQuestionId('750424ae-cfea-4050-bc67-24796974b808'),
   title: `Give examples of how we use hooks to imitate different lifecycle events`,
   answer: `ComponentDidMount (run once on mount):
 \`\`\`javascript

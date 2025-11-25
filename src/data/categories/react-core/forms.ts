@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const forms: Question = {
-  id: 'f13d8beb-9eac-42f6-a3ed-8df7bb2bc49e',
+  id: createQuestionId('f13d8beb-9eac-42f6-a3ed-8df7bb2bc49e'),
   title: `How do we create forms in React`,
   answer: `Forms in React are usually controlled components: input values are stored in state and updated via onChange handlers. Example:
 \`\`\`javascript

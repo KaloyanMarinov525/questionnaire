@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const provisioning_profile: Question = {
-  id: '6826990f-9534-4b42-9576-ad4decc3c065',
+  id: createQuestionId('6826990f-9534-4b42-9576-ad4decc3c065'),
   title: `What is a provisioning profile`,
   answer: `A provisioning profile is a file used in iOS development that tells Apple devices how and by whom an app is allowed to be run. It links:
 - The App ID (unique identifier of your app).

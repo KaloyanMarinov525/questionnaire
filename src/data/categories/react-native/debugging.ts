@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const debugging: Question = {
-  id: '0fa95d2d-0aaa-45cb-963d-e7f94f580139',
+  id: createQuestionId('0fa95d2d-0aaa-45cb-963d-e7f94f580139'),
   title: `How do we debug a React Native app`,
   answer: `- Dev Menu: open it (iOS: Cmd+D / shake; Android: Cmd+M / shake) to enable Reload, Enable Fast Refresh, Toggle Performance Monitor, etc.
 - Logs & warnings: use console.log, console.warn, and LogBox (tap a warning to see stack; suppress with LogBox.ignoreLogs). View native logs with adb logcat / Xcode console.

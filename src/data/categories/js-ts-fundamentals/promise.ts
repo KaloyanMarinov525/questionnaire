@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const promise: Question = {
-  id: '3d3899a6-efc3-48a4-982e-efa56d7a470b',
+  id: createQuestionId('3d3899a6-efc3-48a4-982e-efa56d7a470b'),
   title: `Explain promise`,
   answer: `A Promise in JavaScript is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It has three states:
 - pending → initial state, operation not finished yet.

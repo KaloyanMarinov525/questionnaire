@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const single_thread: Question = {
-  id: 'e9105080-50f1-4f6c-b43e-e4e21eee8988',
+  id: createQuestionId('e9105080-50f1-4f6c-b43e-e4e21eee8988'),
   title: `Explain JavaScript Single-Thread`,
   answer: `JavaScript is single-threaded, meaning it has one call stack and can execute one task at a time. Unlike multi-threaded languages, it doesn't run multiple pieces of code simultaneously in the same process.
 

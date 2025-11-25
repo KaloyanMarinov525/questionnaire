@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const usememo_vs_usestate: Question = {
-  id: '5d6b0b13-d074-4302-9a00-770539f00c41',
+  id: createQuestionId('5d6b0b13-d074-4302-9a00-770539f00c41'),
   title: `How does useMemo differ from useState`,
   answer: `useState is for managing component state — it stores a value and provides a setter that triggers re-renders when updated.
 

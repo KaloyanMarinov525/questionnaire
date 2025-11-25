@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const null_vs_undefined: Question = {
-  id: 'bf45f236-2c02-463f-85c1-2d16eb308b4a',
+  id: createQuestionId('bf45f236-2c02-463f-85c1-2d16eb308b4a'),
   title: `What is the difference between null and undefined`,
   answer: `- undefined: a value that indicates a variable has been declared but hasn't been assigned a value, or a function has no return value.
 - null: a value deliberately assigned to represent "no value" or "empty".

@@ -40,8 +40,8 @@ export function QuestionCard({
           onClick={onToggleAnswer}
           className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold mb-4 transition-colors cursor-pointer"
         >
-          {isAnswerExpanded ? '▼' : '▶'}{' '}
-          {isAnswerExpanded ? 'Hide' : 'Show'} Answer
+          {isAnswerExpanded ? '▼' : '▶'} {isAnswerExpanded ? 'Hide' : 'Show'}{' '}
+          Answer
         </button>
 
         {isAnswerExpanded && (

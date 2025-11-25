@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const what_is_reconciliation: Question = {
-  id: '2d9e4222-b2cb-429b-8b0a-19ea9839262b',
+  id: createQuestionId('2d9e4222-b2cb-429b-8b0a-19ea9839262b'),
   title: `What is reconciliation`,
   answer: `Reconciliation is the process React uses to update the DOM (or native UI in RN) when a component's state or props change. React creates a new virtual DOM tree, compares it with the previous one using a diffing algorithm, and then updates only the parts of the real DOM that changed (not the whole tree).
 

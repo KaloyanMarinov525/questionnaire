@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const typescript_benefits: Question = {
-  id: '4e7e307a-4e77-4115-b3a4-4bcbfa3d25a5',
+  id: createQuestionId('4e7e307a-4e77-4115-b3a4-4bcbfa3d25a5'),
   title: `How does TypeScript work and what are its benefits`,
   answer: `TypeScript is a superset of JavaScript that adds static typing. Code is written in .ts files, compiled (transpiled) by the TypeScript compiler (tsc) into plain JavaScript that browsers can run.
 

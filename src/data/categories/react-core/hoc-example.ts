@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const hoc_example: Question = {
-  id: '3887714c-d8f6-4e0f-84cb-7ffbed8c8de9',
+  id: createQuestionId('3887714c-d8f6-4e0f-84cb-7ffbed8c8de9'),
   title: `Give me example for HOC`,
   answer: `A Higher-Order Component (HOC) is a function that takes a component and returns a new component with extended behavior.
 

@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const prevent_child_rerenders: Question = {
-  id: 'f07351a6-2fb0-4a1e-be10-ce6e2b04c12c',
+  id: createQuestionId('f07351a6-2fb0-4a1e-be10-ce6e2b04c12c'),
   title: `How to prevent unnecessary child re-renders`,
   answer: `- Wrap child with React.memo → skips re-render if props are shallowly equal.
 - Use useCallback / useMemo in the parent to keep function/prop references stable.

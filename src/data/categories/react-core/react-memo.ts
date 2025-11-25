@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const react_memo: Question = {
-  id: '2a393d9e-d623-46e1-bb35-f0c6e139439b',
+  id: createQuestionId('2a393d9e-d623-46e1-bb35-f0c6e139439b'),
   title: `What is React.memo`,
   answer: `React.memo is a higher-order component (HOC) that tells React: "Only re-render this component if its props actually change." By default, when a parent re-renders, all its children re-render too. With React.memo, React will skip re-rendering a child if its props are the same as before (shallow comparison).
 

@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const function_hoisting: Question = {
-  id: 'c98c304b-987f-452c-9332-fce7307d0c6b',
+  id: createQuestionId('c98c304b-987f-452c-9332-fce7307d0c6b'),
   title: `Are functions hoisted`,
   answer: `Yes — but not only for functions. Function declarations are fully hoisted, so you can call them before their definition.
 

@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const redux_slices: Question = {
-  id: '4ad1142e-5a85-47bc-a0a0-31dda071430d',
+  id: createQuestionId('4ad1142e-5a85-47bc-a0a0-31dda071430d'),
   title: `Explain slices in modern Redux Toolkit`,
   answer: `In Redux Toolkit, a slice is a collection of logic for a specific feature of your app. Each slice bundles together:
 - Name: the slice's namespace (used to prefix actions).

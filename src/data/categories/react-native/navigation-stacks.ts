@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const navigation_stacks: Question = {
-  id: '1b692107-e6fc-4d0b-8c21-1b36f87e4e77',
+  id: createQuestionId('1b692107-e6fc-4d0b-8c21-1b36f87e4e77'),
   title: `Explain how we navigate in navigation stacks`,
   answer: `In React Native (with React Navigation), a stack navigator organizes screens in a stack — like a browser history or call stack.
 

@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const redux_toolkit: Question = {
-  id: '418d4570-014e-438d-bea4-21eb7081a316',
+  id: createQuestionId('418d4570-014e-438d-bea4-21eb7081a316'),
   title: `Explain Redux Toolkit`,
   answer: `Redux Toolkit (RTK) is the official, recommended way to write Redux logic. It simplifies Redux by reducing boilerplate and providing opinionated utilities for common patterns like reducers, actions, and async logic.
 

@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const navigate_vs_push: Question = {
-  id: '894b5584-e6c9-47b1-a53d-3ebe54015db5',
+  id: createQuestionId('894b5584-e6c9-47b1-a53d-3ebe54015db5'),
   title: `What is the difference between navigate and push`,
   answer: `- navigate("Screen")
   ○ Goes to the screen if it exists in the stack.

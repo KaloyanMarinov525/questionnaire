@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const app_signing: Question = {
-  id: '384cd145-4bc4-4f02-930f-fd67c2a054de',
+  id: createQuestionId('384cd145-4bc4-4f02-930f-fd67c2a054de'),
   title: `Explain app signing for iOS and Android`,
   answer: `iOS app signing:
 - Every iOS app must be signed with a certificate issued by Apple.

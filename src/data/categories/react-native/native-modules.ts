@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const native_modules: Question = {
-  id: '65e36e38-9f6d-4d22-a3a1-76f114e89c73',
+  id: createQuestionId('65e36e38-9f6d-4d22-a3a1-76f114e89c73'),
   title: `Explain React Native Native Modules`,
   answer: `Native modules let React Native apps access platform-specific APIs (iOS/Android) directly from JavaScript. They act as a bridge between JS and native code, exposing native functionality (camera, sensors, storage, etc.) as callable JS functions.
 

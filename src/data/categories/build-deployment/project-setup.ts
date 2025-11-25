@@ -1,7 +1,8 @@
+import { createQuestionId } from '../../types'
 import type { Question } from '../../types'
 
 export const project_setup: Question = {
-  id: 'e466abd4-ff7c-49c8-b74e-e8671f4c64c9',
+  id: createQuestionId('e466abd4-ff7c-49c8-b74e-e8671f4c64c9'),
   title: `How do you set up a project for success`,
   answer: `## Architecture & Structure
 
