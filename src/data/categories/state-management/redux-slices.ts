@@ -4,10 +4,10 @@ export const redux_slices: Question = {
   id: '4ad1142e-5a85-47bc-a0a0-31dda071430d',
   title: `Explain slices in modern Redux Toolkit`,
   answer: `In Redux Toolkit, a slice is a collection of logic for a specific feature of your app. Each slice bundles together:
-● Name: the slice's namespace (used to prefix actions).
-● Initial state: the default state for that feature.
-● Reducers: functions that define how state changes in response to actions.
-● Actions: auto-generated from the reducers.
+- Name: the slice's namespace (used to prefix actions).
+- Initial state: the default state for that feature.
+- Reducers: functions that define how state changes in response to actions.
+- Actions: auto-generated from the reducers.
 
 This reduces boilerplate compared to classic Redux where actions, constants, and reducers had to be defined separately.
 

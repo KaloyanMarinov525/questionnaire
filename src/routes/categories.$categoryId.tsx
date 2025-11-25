@@ -1,6 +1,9 @@
 import { createFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeHighlight from 'rehype-highlight'
 import { questions } from '../data/questions'
 
 interface SearchParams {
@@ -169,8 +172,13 @@ function CategoryPage() {
               </button>
 
               {isAnswerExpanded && (
-                <div className="prose prose-invert max-w-none text-slate-300 whitespace-pre-wrap leading-relaxed">
-                  {currentQuestion.answer}
+                <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed markdown-content">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeHighlight]}
+                  >
+                    {currentQuestion.answer}
+                  </ReactMarkdown>
                 </div>
               )}
             </div>

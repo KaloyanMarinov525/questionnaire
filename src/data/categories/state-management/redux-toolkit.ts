@@ -6,11 +6,11 @@ export const redux_toolkit: Question = {
   answer: `Redux Toolkit (RTK) is the official, recommended way to write Redux logic. It simplifies Redux by reducing boilerplate and providing opinionated utilities for common patterns like reducers, actions, and async logic.
 
 Key features:
-● configureStore: sets up the Redux store with good defaults (DevTools, middleware, immutability checks).
-● createSlice: generates reducers and actions together in one place.
-● createAsyncThunk: simplifies async requests and dispatching loading/success/error states.
-● Immer integration: lets you write "mutating" logic in reducers while keeping immutability under the hood.
-● Built-in middleware: for handling async code, dev logging, and immutability.
+- configureStore: sets up the Redux store with good defaults (DevTools, middleware, immutability checks).
+- createSlice: generates reducers and actions together in one place.
+- createAsyncThunk: simplifies async requests and dispatching loading/success/error states.
+- Immer integration: lets you write "mutating" logic in reducers while keeping immutability under the hood.
+- Built-in middleware: for handling async code, dev logging, and immutability.
 
 Example:
 \`\`\`javascript
@@ -18,7 +18,7 @@ import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 // Async action
 export const fetchUser = createAsyncThunk('user/fetch', async id => {
-  const res = await fetch(\\\`/api/user/\\\${id}\\\`);
+  const res = await fetch(\`/api/user/\${id}\`);
   return res.json();
 });
 

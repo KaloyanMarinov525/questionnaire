@@ -13,12 +13,14 @@ b();
 // Order: a → b
 \`\`\`
 
-● Queue (Callback / Task Queue & Microtask Queue)
-When async tasks (like setTimeout, promises, or events) complete, their callbacks are placed in a queue.
-Event loop checks if the call stack is empty → if yes, it pushes the next callback from the queue to the stack.
+## Queue (Callback / Task Queue & Microtask Queue)
+
+When async tasks (like setTimeout, promises, or events) complete, their callbacks are placed in a queue. Event loop checks if the call stack is empty → if yes, it pushes the next callback from the queue to the stack.
+
 There are two main queues:
-■ Macro-task queue: setTimeout, setInterval, DOM events.
-■ Micro-task queue: Promises, queueMicrotask, MutationObserver (higher priority, executed before macro-tasks).
+
+- **Macro-task queue**: setTimeout, setInterval, DOM events.
+- **Micro-task queue**: Promises, queueMicrotask, MutationObserver (higher priority, executed before macro-tasks).
 
 Example:
 \`\`\`javascript

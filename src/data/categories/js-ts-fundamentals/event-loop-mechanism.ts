@@ -6,11 +6,12 @@ export const event_loop_mechanism: Question = {
   answer: `1. Execute synchronous code from the call stack.
 2. When async tasks finish (like setTimeout, API calls, promises), their callbacks go into queues.
 3. The event loop checks:
-   ○ If the stack is empty → it first processes microtasks (promises).
-   ○ Then it processes macro-tasks (timeouts, events).
+   - If the stack is empty → it first processes microtasks (promises).
+   - Then it processes macro-tasks (timeouts, events).
 4. This cycle repeats endlessly, giving the illusion of concurrency.
 
-Example:
+## Example:
+
 \`\`\`javascript
 console.log("start");
 setTimeout(() => console.log("timeout"), 0);

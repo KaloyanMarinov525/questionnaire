@@ -23,7 +23,7 @@ export default function Parent() {
 }
 \`\`\`
 
-● Without React.memo: Child re-renders every time Parent re-renders.
-● With React.memo: Child won't re-render unless the value prop changes.`,
+- Without React.memo: Child re-renders every time Parent re-renders.
+- With React.memo: Child won't re-render unless the value prop changes.`,
   tags: ['React.memo', 'Performance', 'HOC'],
 }

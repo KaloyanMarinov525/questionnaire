@@ -5,9 +5,9 @@ export const single_thread: Question = {
   title: `Explain JavaScript Single-Thread`,
   answer: `JavaScript is single-threaded, meaning it has one call stack and can execute one task at a time. Unlike multi-threaded languages, it doesn't run multiple pieces of code simultaneously in the same process.
 
-● Single call stack: all synchronous code runs line by line.
-● Asynchronous behavior: achieved not by multiple threads, but by the event loop delegating tasks to the browser (or Node.js APIs) and then queueing callbacks.
-● Non-blocking I/O: while JS is single-threaded, heavy operations like timers, network requests, or file access are offloaded to the environment; JS gets the result later via callbacks, promises, or async/await.
+- Single call stack: all synchronous code runs line by line.
+- Asynchronous behavior: achieved not by multiple threads, but by the event loop delegating tasks to the browser (or Node.js APIs) and then queueing callbacks.
+- Non-blocking I/O: while JS is single-threaded, heavy operations like timers, network requests, or file access are offloaded to the environment; JS gets the result later via callbacks, promises, or async/await.
 
 Example:
 \`\`\`javascript

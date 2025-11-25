@@ -6,10 +6,10 @@ export const design_patterns: Question = {
   answer: `Design patterns are proven, reusable solutions to common software design problems. They are not code snippets, but templates for solving issues in a consistent and maintainable way.
 
 Examples of design patterns:
-● Singleton: ensures only one instance of a class exists.
-● Factory: creates objects without exposing the creation logic.
-● Observer (Pub/Sub): notifies multiple subscribers when a subject changes.
-● Strategy: defines a family of algorithms and makes them interchangeable.
-● Decorator: adds behavior to objects dynamically without changing their code.`,
+- Singleton: ensures only one instance of a class exists.
+- Factory: creates objects without exposing the creation logic.
+- Observer (Pub/Sub): notifies multiple subscribers when a subject changes.
+- Strategy: defines a family of algorithms and makes them interchangeable.
+- Decorator: adds behavior to objects dynamically without changing their code.`,
   tags: ['Design Patterns', 'Architecture', 'Software Design'],
 }

@@ -6,10 +6,10 @@ export const typescript_benefits: Question = {
   answer: `TypeScript is a superset of JavaScript that adds static typing. Code is written in .ts files, compiled (transpiled) by the TypeScript compiler (tsc) into plain JavaScript that browsers can run.
 
 Benefits:
-● Type safety: catches errors at compile time instead of runtime.
-● Better tooling: autocompletion, IntelliSense, and refactoring in IDEs.
-● Readability & maintainability: types make contracts between components clear.
-● Scalability: large projects are easier to manage with strict typing.
-● Modern JS features: support for latest ECMAScript features before native adoption.`,
+- Type safety: catches errors at compile time instead of runtime.
+- Better tooling: autocompletion, IntelliSense, and refactoring in IDEs.
+- Readability & maintainability: types make contracts between components clear.
+- Scalability: large projects are easier to manage with strict typing.
+- Modern JS features: support for latest ECMAScript features before native adoption.`,
   tags: ['TypeScript', 'Type Safety', 'Compilation'],
 }

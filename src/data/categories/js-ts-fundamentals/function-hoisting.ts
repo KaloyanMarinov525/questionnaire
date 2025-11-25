@@ -14,7 +14,7 @@ function greet() {
 \`\`\`
 
 But with variables, it's different:
-● var → hoisted but initialized with undefined.
-● let / const → hoisted, but in the Temporal Dead Zone, so you get an error if accessed before definition.`,
+- var → hoisted but initialized with undefined.
+- let / const → hoisted, but in the Temporal Dead Zone, so you get an error if accessed before definition.`,
   tags: ['Hoisting', 'Functions', 'Temporal Dead Zone'],
 }
