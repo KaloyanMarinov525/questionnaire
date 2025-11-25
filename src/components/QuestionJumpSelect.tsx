@@ -6,6 +6,13 @@ interface QuestionJumpSelectProps {
   onSelectQuestion: (index: number) => void
 }
 
+export function formatQuestionTitle(title: string, maxLength: number = 40): string {
+  if (title.length > maxLength) {
+    return `${title.substring(0, maxLength)}...`
+  }
+  return title
+}
+
 export function QuestionJumpSelect({
   questions,
   currentIndex,
@@ -24,8 +31,7 @@ export function QuestionJumpSelect({
         >
           {questions.map((question, idx) => (
             <option key={question.id} value={idx}>
-              Q{idx + 1}: {question.title.substring(0, 40)}
-              {question.title.length > 40 ? '...' : ''}
+              Q{idx + 1}: {formatQuestionTitle(question.title)}
             </option>
           ))}
         </select>
