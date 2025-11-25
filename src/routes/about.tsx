@@ -6,7 +6,7 @@ export const Route = createFileRoute('/about')({
 
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       {/* Main Content */}
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">

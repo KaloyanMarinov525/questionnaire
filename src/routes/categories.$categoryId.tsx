@@ -37,7 +37,7 @@ function CategoryPage() {
   const category = questions.find((cat) => cat.id === categoryId)
   if (!category) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex items-center justify-center">
+      <div className="min-h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Category not found</h1>
           <button
@@ -106,7 +106,7 @@ function CategoryPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       {/* Main Content */}
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
