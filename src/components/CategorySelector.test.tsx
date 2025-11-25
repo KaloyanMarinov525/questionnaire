@@ -28,7 +28,7 @@ describe('CategorySelector', () => {
         categories={mockCategories}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText(/React Core/)).toBeInTheDocument()
@@ -42,7 +42,7 @@ describe('CategorySelector', () => {
         categories={mockCategories}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     const select = container.querySelector('select') as HTMLSelectElement
@@ -56,7 +56,7 @@ describe('CategorySelector', () => {
         categories={mockCategories}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     const select = container.querySelector('select') as HTMLSelectElement
@@ -77,7 +77,7 @@ describe('CategorySelector', () => {
         categories={categoriesWithQuestions}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText(/2\)/)).toBeInTheDocument()
@@ -91,7 +91,7 @@ describe('CategorySelector', () => {
         categories={[mockCategories[0]]}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText(/React Core/)).toBeInTheDocument()
@@ -104,7 +104,7 @@ describe('CategorySelector', () => {
         categories={mockCategories}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     let select = container.querySelector('select') as HTMLSelectElement
@@ -115,7 +115,7 @@ describe('CategorySelector', () => {
         categories={mockCategories}
         currentCategoryId="js-fundamentals"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     select = container.querySelector('select') as HTMLSelectElement
@@ -129,7 +129,7 @@ describe('CategorySelector', () => {
         categories={mockCategories}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     const svg = container.querySelector('svg')
@@ -145,7 +145,7 @@ describe('CategorySelector', () => {
         categories={mockCategories}
         currentCategoryId="react-core"
         onSelectCategory={onSelect}
-      />
+      />,
     )
 
     const iconContainer = container.querySelector('.pointer-events-none')

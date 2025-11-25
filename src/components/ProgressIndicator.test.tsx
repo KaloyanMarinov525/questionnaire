@@ -37,7 +37,7 @@ describe('ProgressIndicator', () => {
 
   it('should render progress bar', () => {
     const { container } = render(
-      <ProgressIndicator currentIndex={2} totalQuestions={10} />
+      <ProgressIndicator currentIndex={2} totalQuestions={10} />,
     )
     const progressBar = container.querySelector('div[style*="width"]')
     expect(progressBar).toBeInTheDocument()
@@ -45,23 +45,27 @@ describe('ProgressIndicator', () => {
 
   it('should set correct progress bar width', () => {
     const { container } = render(
-      <ProgressIndicator currentIndex={4} totalQuestions={10} />
+      <ProgressIndicator currentIndex={4} totalQuestions={10} />,
     )
-    const progressBar = container.querySelector('div[style*="width"]') as HTMLElement
+    const progressBar = container.querySelector(
+      'div[style*="width"]',
+    ) as HTMLElement
     expect(progressBar.style.width).toBe('50%')
   })
 
   it('should set progress bar to 10% for first question', () => {
     const { container } = render(
-      <ProgressIndicator currentIndex={0} totalQuestions={10} />
+      <ProgressIndicator currentIndex={0} totalQuestions={10} />,
     )
-    const progressBar = container.querySelector('div[style*="width"]') as HTMLElement
+    const progressBar = container.querySelector(
+      'div[style*="width"]',
+    ) as HTMLElement
     expect(progressBar.style.width).toBe('10%')
   })
 
   it('should render with rounded progress bar container', () => {
     const { container } = render(
-      <ProgressIndicator currentIndex={5} totalQuestions={10} />
+      <ProgressIndicator currentIndex={5} totalQuestions={10} />,
     )
     const progressContainer = container.querySelector('div.rounded-full')
     expect(progressContainer).toBeInTheDocument()
@@ -84,21 +88,17 @@ describe('ProgressIndicator', () => {
 
   it('should have progress bar with gradient classes', () => {
     const { container } = render(
-      <ProgressIndicator currentIndex={3} totalQuestions={10} />
+      <ProgressIndicator currentIndex={3} totalQuestions={10} />,
     )
-    const progressBar = container.querySelector(
-      'div.bg-gradient-to-r'
-    )
+    const progressBar = container.querySelector('div.bg-gradient-to-r')
     expect(progressBar).toBeInTheDocument()
   })
 
   it('should have progress bar with transition classes', () => {
     const { container } = render(
-      <ProgressIndicator currentIndex={5} totalQuestions={10} />
+      <ProgressIndicator currentIndex={5} totalQuestions={10} />,
     )
-    const progressBar = container.querySelector(
-      'div.transition-all'
-    )
+    const progressBar = container.querySelector('div.transition-all')
     expect(progressBar).toBeInTheDocument()
   })
 })

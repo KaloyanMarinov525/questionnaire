@@ -16,7 +16,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     expect(screen.getByText('Previous')).toBeInTheDocument()
@@ -34,7 +34,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     expect(screen.getByText('Category Selector')).toBeInTheDocument()
@@ -50,7 +50,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={true}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const buttons = container.querySelectorAll('button')
@@ -68,7 +68,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={true}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const buttons = container.querySelectorAll('button')
@@ -87,7 +87,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const previousButton = screen.getByText('Previous')
@@ -107,7 +107,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const nextButton = screen.getByText('Next')
@@ -126,7 +126,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={true}
         isLastQuestion={true}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const buttons = container.querySelectorAll('button')
@@ -144,7 +144,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const buttons = container.querySelectorAll('button')
@@ -163,7 +163,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const nextButton = screen.getByText('Next')
@@ -185,7 +185,7 @@ describe('NavigationButtons', () => {
         isFirstQuestion={false}
         isLastQuestion={false}
         categorySelector={mockCategorySelector}
-      />
+      />,
     )
 
     const previousButton = screen.getByText('Previous')

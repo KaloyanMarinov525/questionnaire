@@ -25,4 +25,3 @@ describe('Header', () => {
     expect(typeof Header).toBe('function')
   })
 })
-

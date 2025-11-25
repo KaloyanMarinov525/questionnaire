@@ -23,7 +23,7 @@ describe('Entry Points', () => {
 
     it('should export reportWebVitals as default', async () => {
       const reportWebVitals = await import('../reportWebVitals').then(
-        (m) => m.default
+        (m) => m.default,
       )
       expect(reportWebVitals).toBeDefined()
       expect(typeof reportWebVitals).toBe('function')

@@ -18,7 +18,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     expect(screen.getByText('What is React?')).toBeInTheDocument()
   })
@@ -30,7 +30,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     expect(screen.getByText('React')).toBeInTheDocument()
     expect(screen.getByText('JavaScript')).toBeInTheDocument()
@@ -43,7 +43,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     expect(screen.getByText(/Show Answer/)).toBeInTheDocument()
   })
@@ -55,7 +55,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={true}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     expect(screen.getByText(/Hide Answer/)).toBeInTheDocument()
   })
@@ -67,7 +67,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     const button = screen.getByRole('button')
     fireEvent.click(button)
@@ -81,7 +81,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={true}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     expect(container.querySelector('.markdown-content')).toBeInTheDocument()
   })
@@ -93,7 +93,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     expect(container.querySelector('.markdown-content')).not.toBeInTheDocument()
   })
@@ -106,11 +106,11 @@ describe('QuestionCard', () => {
         question={questionNoTags}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     expect(screen.getByText('What is React?')).toBeInTheDocument()
     expect(container.querySelectorAll('span')).not.toContain(
-      expect.objectContaining({ textContent: 'React' })
+      expect.objectContaining({ textContent: 'React' }),
     )
   })
 
@@ -121,7 +121,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     expect(screen.getByText(/Show Answer/)).toBeInTheDocument()
@@ -131,7 +131,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={true}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     expect(screen.getByText(/Hide Answer/)).toBeInTheDocument()
@@ -141,7 +141,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     expect(screen.getByText(/Show Answer/)).toBeInTheDocument()
@@ -158,7 +158,7 @@ describe('QuestionCard', () => {
         question={questionMultipleTags}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     expect(screen.getByText('React')).toBeInTheDocument()
@@ -174,7 +174,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     const button = screen.getByRole('button')
 
@@ -192,7 +192,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={true}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     const markdownContent = container.querySelector('.markdown-content')
@@ -207,7 +207,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     const button = screen.getByRole('button')
     expect(button.textContent).toContain('▶')
@@ -221,7 +221,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={true}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
     const button = screen.getByRole('button')
     expect(button.textContent).toContain('▼')
@@ -235,7 +235,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     // Initially should not show markdown
@@ -247,7 +247,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={true}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     expect(container.querySelector('.markdown-content')).toBeInTheDocument()
@@ -260,7 +260,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={true}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     const answerSection = container.querySelector('.markdown-content')
@@ -275,7 +275,7 @@ describe('QuestionCard', () => {
         question={mockQuestion}
         isAnswerExpanded={false}
         onToggleAnswer={onToggle}
-      />
+      />,
     )
 
     const answerSection = container.querySelector('.markdown-content')

@@ -16,9 +16,11 @@ export function useKeyboardNavigation(options: KeyboardNavigationOptions) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       // Don't trigger shortcuts when typing in an input
-      if (event.target instanceof HTMLInputElement ||
-          event.target instanceof HTMLTextAreaElement ||
-          event.target instanceof HTMLSelectElement) {
+      if (
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLTextAreaElement ||
+        event.target instanceof HTMLSelectElement
+      ) {
         return
       }
 

@@ -80,10 +80,7 @@ describe('cn utility function', () => {
   })
 
   it('should combine multiple conflicting classes correctly', () => {
-    const result = cn(
-      'px-2 py-1 bg-red-500',
-      'px-4 bg-blue-500'
-    )
+    const result = cn('px-2 py-1 bg-red-500', 'px-4 bg-blue-500')
     expect(result).toContain('px-4')
     expect(result).toContain('py-1')
     expect(result).toContain('bg-blue-500')

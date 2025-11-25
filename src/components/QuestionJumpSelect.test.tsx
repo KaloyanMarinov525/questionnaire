@@ -32,7 +32,7 @@ describe('QuestionJumpSelect', () => {
         questions={mockQuestions}
         currentIndex={0}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText('Jump to Question:')).toBeInTheDocument()
@@ -45,7 +45,7 @@ describe('QuestionJumpSelect', () => {
         questions={mockQuestions}
         currentIndex={0}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText(/What is React/)).toBeInTheDocument()
@@ -69,7 +69,7 @@ describe('QuestionJumpSelect', () => {
         questions={longTitleQuestions}
         currentIndex={0}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText(/\.\.\./)).toBeInTheDocument()
@@ -82,7 +82,7 @@ describe('QuestionJumpSelect', () => {
         questions={mockQuestions}
         currentIndex={1}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     const select = container.querySelector('select') as HTMLSelectElement
@@ -96,7 +96,7 @@ describe('QuestionJumpSelect', () => {
         questions={mockQuestions}
         currentIndex={0}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     const select = container.querySelector('select') as HTMLSelectElement
@@ -121,7 +121,7 @@ describe('QuestionJumpSelect', () => {
         questions={shortTitleQuestions}
         currentIndex={0}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText('Q1: Short title')).toBeInTheDocument()
@@ -135,7 +135,7 @@ describe('QuestionJumpSelect', () => {
         questions={mockQuestions}
         currentIndex={0}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     expect(screen.getByText(/Q1:/)).toBeInTheDocument()
@@ -150,7 +150,7 @@ describe('QuestionJumpSelect', () => {
         questions={mockQuestions}
         currentIndex={0}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     let select = container.querySelector('select') as HTMLSelectElement
@@ -161,7 +161,7 @@ describe('QuestionJumpSelect', () => {
         questions={mockQuestions}
         currentIndex={2}
         onSelectQuestion={onSelect}
-      />
+      />,
     )
 
     select = container.querySelector('select') as HTMLSelectElement
@@ -175,9 +175,13 @@ describe('QuestionJumpSelect', () => {
     })
 
     it('should truncate and add ellipsis for long titles', () => {
-      const result = formatQuestionTitle('This is a very long question title that should be truncated')
+      const result = formatQuestionTitle(
+        'This is a very long question title that should be truncated',
+      )
       expect(result).toContain('...')
-      expect(result.length).toBeLessThan('This is a very long question title that should be truncated'.length)
+      expect(result.length).toBeLessThan(
+        'This is a very long question title that should be truncated'.length,
+      )
     })
 
     it('should respect custom max length', () => {
@@ -227,7 +231,8 @@ describe('QuestionJumpSelect', () => {
     })
 
     it('should handle very long special character title', () => {
-      const title = 'What is this & that? (Test) - with a very long question about something important'
+      const title =
+        'What is this & that? (Test) - with a very long question about something important'
       const result = formatQuestionTitle(title)
       expect(result).toContain('...')
       expect(result.length).toBeLessThan(title.length)
