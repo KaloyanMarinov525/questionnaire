@@ -3,7 +3,8 @@ import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { Home, Info, Menu, X } from 'lucide-react'
 
-const linkBaseStyles = 'flex items-center gap-3 p-3 rounded-lg transition-colors mb-2'
+const linkBaseStyles =
+  'flex items-center gap-3 p-3 rounded-lg transition-colors mb-2'
 const linkInactiveStyles = `${linkBaseStyles} hover:bg-gray-800`
 const linkActiveStyles = `${linkBaseStyles} bg-cyan-600 [&:hover]:bg-cyan-600 [&:focus]:bg-cyan-600`
 
@@ -29,11 +30,7 @@ export default function Header() {
         </button>
         <h1 className="ml-4 text-xl font-semibold">
           <Link to="/">
-            <img
-              src="logo192.png"
-              alt="Logo"
-              className="h-10"
-            />
+            <img src="logo192.png" alt="Logo" className="h-10" />
           </Link>
         </h1>
       </header>
