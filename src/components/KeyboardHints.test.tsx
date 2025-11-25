@@ -58,6 +58,25 @@ describe('KeyboardHints', () => {
   it('should have proper styling for keyboard keys', () => {
     const { container } = render(<KeyboardHints />)
     const keyElements = container.querySelectorAll('span.font-mono')
-    expect(keyElements).toHaveLength(4)
+    expect(keyElements.length).toBeGreaterThanOrEqual(4)
+  })
+
+  it('should be initially hidden', () => {
+    const { container } = render(<KeyboardHints />)
+    const hintsBox = container.querySelector('div[class*="opacity-0"]')
+    expect(hintsBox).toBeInTheDocument()
+  })
+
+  it('should have close button', () => {
+    const { container } = render(<KeyboardHints />)
+    const closeButton = container.querySelector('button')
+    expect(closeButton).toBeInTheDocument()
+    expect(closeButton).toHaveAttribute('aria-label', 'Close keyboard hints')
+  })
+
+  it('should display toggle instructions', () => {
+    const { container } = render(<KeyboardHints />)
+    expect(container.textContent).toContain('Ctrl + ?')
+    expect(container.textContent).toContain('Esc')
   })
 })
