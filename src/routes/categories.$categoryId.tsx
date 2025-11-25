@@ -1,9 +1,11 @@
 import { createFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import rehypeHighlight from 'rehype-highlight'
+import { ProgressIndicator } from '../components/ProgressIndicator'
+import { QuestionJumpSelect } from '../components/QuestionJumpSelect'
+import { QuestionCard } from '../components/QuestionCard'
+import { NavigationButtons } from '../components/NavigationButtons'
+import { CategorySelector } from '../components/CategorySelector'
+import { CategoryInfo } from '../components/CategoryInfo'
 import { questions } from '../data/questions'
 
 interface SearchParams {
@@ -86,151 +88,55 @@ function CategoryPage() {
     setIsAnswerExpanded(false)
   }
 
+  const categorySelectorComponent = (
+    <CategorySelector
+      categories={questions}
+      currentCategoryId={categoryId}
+      onSelectCategory={handleCategoryChange}
+    />
+  )
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       {/* Main Content */}
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          {/* Progress Indicator */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-medium text-slate-400">
-                Question {currentIndex + 1} of {category.questions.length}
-              </span>
-              <span className="text-sm font-medium text-cyan-400">
-                {Math.round(
-                  ((currentIndex + 1) / category.questions.length) * 100,
-                )}
-                %
-              </span>
-            </div>
-            <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-300"
-                style={{
-                  width: `${((currentIndex + 1) / category.questions.length) * 100}%`,
-                }}
-              ></div>
-            </div>
+          <ProgressIndicator
+            currentIndex={currentIndex}
+            totalQuestions={category.questions.length}
+          />
 
-            {/* Quick Jump to Question */}
-            <div className="mt-4">
-              <label className="text-xs font-medium text-slate-400 block mb-2">
-                Jump to Question:
-              </label>
-              <select
-                value={currentIndex}
-                onChange={(e) => {
-                  const newIndex = parseInt(e.target.value, 10)
-                  navigate({
-                    to: '/categories/$categoryId',
-                    params: { categoryId },
-                    search: (prev) => ({ ...prev, index: newIndex }),
-                  })
-                  setIsAnswerExpanded(false)
-                }}
-                className="w-full px-3 py-2 bg-slate-700 text-white text-sm rounded-lg border border-slate-600 hover:border-cyan-500 focus:border-cyan-500 focus:outline-none transition-colors cursor-pointer"
-              >
-                {category.questions.map((question, idx) => (
-                  <option key={question.id} value={idx}>
-                    Q{idx + 1}: {question.title.substring(0, 40)}
-                    {question.title.length > 40 ? '...' : ''}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <QuestionJumpSelect
+            questions={category.questions}
+            currentIndex={currentIndex}
+            onSelectQuestion={(newIndex) => {
+              navigate({
+                to: '/categories/$categoryId',
+                params: { categoryId },
+                search: (prev) => ({ ...prev, index: newIndex }),
+              })
+              setIsAnswerExpanded(false)
+            }}
+          />
 
-          {/* Question Card */}
-          <div className="bg-slate-800 rounded-lg p-8 mb-8 border border-slate-700">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-white">
-              {currentQuestion.title}
-            </h2>
+          <QuestionCard
+            question={currentQuestion}
+            isAnswerExpanded={isAnswerExpanded}
+            onToggleAnswer={() => setIsAnswerExpanded(!isAnswerExpanded)}
+          />
 
-            {/* Tags */}
-            {currentQuestion.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
-                {currentQuestion.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-medium rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
+          <NavigationButtons
+            onPrevious={handlePrevious}
+            onNext={handleNext}
+            isFirstQuestion={isFirstQuestion}
+            isLastQuestion={isLastQuestion}
+            categorySelector={categorySelectorComponent}
+          />
 
-            {/* Answer */}
-            <div className="mt-6 pt-6 border-t border-slate-700">
-              <button
-                onClick={() => setIsAnswerExpanded(!isAnswerExpanded)}
-                className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold mb-4 transition-colors cursor-pointer"
-              >
-                {isAnswerExpanded ? '▼' : '▶'}{' '}
-                {isAnswerExpanded ? 'Hide' : 'Show'} Answer
-              </button>
-
-              {isAnswerExpanded && (
-                <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed markdown-content">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeHighlight]}
-                  >
-                    {currentQuestion.answer}
-                  </ReactMarkdown>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <button
-              onClick={handlePrevious}
-              disabled={isFirstQuestion}
-              className="flex items-center justify-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed cursor-pointer rounded-lg font-semibold transition-colors"
-            >
-              <ChevronLeft size={20} />
-              <span>Previous</span>
-            </button>
-
-            <div className="flex-1 flex items-center justify-center">
-              <select
-                value={categoryId}
-                onChange={(e) => handleCategoryChange(e.target.value)}
-                className="px-4 py-3 bg-slate-700 text-white rounded-lg font-semibold border border-slate-600 hover:border-cyan-500 focus:border-cyan-500 focus:outline-none transition-colors cursor-pointer"
-              >
-                {questions.map((cat) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.name} ({cat.questions.length})
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <button
-              onClick={handleNext}
-              disabled={isLastQuestion}
-              className="flex items-center justify-center gap-2 px-6 py-3 bg-cyan-600 hover:bg-cyan-700 disabled:bg-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed cursor-pointer rounded-lg font-semibold transition-colors"
-            >
-              <span>Next</span>
-              <ChevronRight size={20} />
-            </button>
-          </div>
-
-          {/* Category Info */}
-          <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-            <p className="text-slate-300">
-              Viewing{' '}
-              <span className="font-semibold text-cyan-400">
-                {category.name}
-              </span>{' '}
-              •{' '}
-              <span className="font-semibold">{category.questions.length}</span>{' '}
-              questions
-            </p>
-          </div>
+          <CategoryInfo
+            categoryName={category.name}
+            questionCount={category.questions.length}
+          />
         </div>
       </div>
     </div>
