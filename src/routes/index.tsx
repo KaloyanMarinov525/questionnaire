@@ -1,60 +1,11 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { questions } from '../data/questions'
+import { getCategoryMetadata } from '../data/questions'
 
 export const Route = createFileRoute('/')({
   component: App,
 })
 
-interface Category {
-  name: string
-  count: number
-  description: string
-  color: string
-}
-
-const getCategoryId = (name: string): string => {
-  const category = questions.find((cat) => cat.name === name)
-  return category?.id || 'networking-apis'
-}
-
-const categories: Array<Category> = [
-  {
-    name: 'Networking & APIs',
-    count: 2,
-    description: 'REST, WebSockets, HTTP interceptors',
-    color: 'from-blue-500 to-blue-600',
-  },
-  {
-    name: 'JavaScript/TypeScript Fundamentals',
-    count: 24,
-    description: 'Event loop, promises, types, design patterns',
-    color: 'from-yellow-500 to-yellow-600',
-  },
-  {
-    name: 'React Core Concepts',
-    count: 30,
-    description: 'Components, hooks, lifecycle, reconciliation',
-    color: 'from-cyan-500 to-cyan-600',
-  },
-  {
-    name: 'React Native',
-    count: 15,
-    description: 'Navigation, debugging, Expo, native modules',
-    color: 'from-purple-500 to-purple-600',
-  },
-  {
-    name: 'State Management',
-    count: 5,
-    description: 'Local state, Zustand, Redux Toolkit',
-    color: 'from-green-500 to-green-600',
-  },
-  {
-    name: 'Build & Deployment',
-    count: 1,
-    description: 'Project setup, CI/CD, best practices',
-    color: 'from-orange-500 to-orange-600',
-  },
-]
+const categories = getCategoryMetadata()
 
 function App() {
   const totalQuestions = categories.reduce((sum, cat) => sum + cat.count, 0)
@@ -96,9 +47,9 @@ function App() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <Link
-                key={category.name}
+                key={category.id}
                 to="/categories/$categoryId"
-                params={{ categoryId: getCategoryId(category.name) }}
+                params={{ categoryId: category.id }}
                 search={{ index: 0 }}
                 className="group relative overflow-hidden rounded-lg bg-slate-800 p-6 transition-all hover:shadow-lg hover:shadow-slate-500/20"
               >

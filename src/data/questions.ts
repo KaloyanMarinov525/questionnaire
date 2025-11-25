@@ -14,3 +14,21 @@ export const questions: Array<Category> = [
   stateManagement,
   buildDeployment,
 ]
+
+export interface CategoryMetadata {
+  id: string
+  name: string
+  description: string
+  color: string
+  count: number
+}
+
+export function getCategoryMetadata(): Array<CategoryMetadata> {
+  return questions.map((category) => ({
+    id: category.id,
+    name: category.name,
+    description: category.description,
+    color: category.color,
+    count: category.questions.length,
+  }))
+}
