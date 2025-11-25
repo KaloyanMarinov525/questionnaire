@@ -6,6 +6,8 @@ import { QuestionCard } from '../components/QuestionCard'
 import { NavigationButtons } from '../components/NavigationButtons'
 import { CategorySelector } from '../components/CategorySelector'
 import { CategoryInfo } from '../components/CategoryInfo'
+import { KeyboardHints } from '../components/KeyboardHints'
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation'
 import { questions } from '../data/questions'
 
 interface SearchParams {
@@ -88,6 +90,13 @@ function CategoryPage() {
     setIsAnswerExpanded(false)
   }
 
+  useKeyboardNavigation({
+    onArrowLeft: handlePrevious,
+    onArrowRight: handleNext,
+    onArrowUp: () => setIsAnswerExpanded(false),
+    onArrowDown: () => setIsAnswerExpanded(true),
+  })
+
   const categorySelectorComponent = (
     <CategorySelector
       categories={questions}
@@ -139,6 +148,7 @@ function CategoryPage() {
           />
         </div>
       </div>
+      <KeyboardHints />
     </div>
   )
 }
