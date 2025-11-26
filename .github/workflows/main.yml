@@ -46,7 +46,7 @@ jobs:
 
   Deploy:
     needs: Build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -56,18 +56,11 @@ jobs:
 
       - name: Deploy to Raspberry Pi
         env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$DEPLOY_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts 2>/dev/null || true
+          rm -rf $DEPLOY_PATH
+          mkdir -p $DEPLOY_PATH
+          cp -r dist/* $DEPLOY_PATH/
 
-          # Deploy using SCP
-          scp -i ~/.ssh/deploy_key -r dist/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
-
-          # Optional: restart your app if you have a restart script
-          # ssh -i ~/.ssh/deploy_key $DEPLOY_USER@$DEPLOY_HOST "cd $DEPLOY_PATH && npm install && npm run build"
+          # Restart nginx
+          sudo systemctl restart nginx
