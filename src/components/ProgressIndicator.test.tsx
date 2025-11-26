@@ -101,4 +101,74 @@ describe('ProgressIndicator', () => {
     const progressBar = container.querySelector('div.transition-all')
     expect(progressBar).toBeInTheDocument()
   })
+
+  it('should render progress bar wrapper with correct classes', () => {
+    const { container } = render(
+      <ProgressIndicator currentIndex={3} totalQuestions={10} />,
+    )
+    const wrapper = container.querySelector('div.w-full')
+    expect(wrapper).toBeInTheDocument()
+    expect(wrapper).toHaveClass('h-2')
+    expect(wrapper).toHaveClass('bg-slate-700')
+    expect(wrapper).toHaveClass('rounded-full')
+    expect(wrapper).toHaveClass('overflow-hidden')
+  })
+
+  it('should render top container with flex and justify-between', () => {
+    const { container } = render(
+      <ProgressIndicator currentIndex={2} totalQuestions={8} />,
+    )
+    const topContainer = container.querySelector('div.flex')
+    expect(topContainer).toBeInTheDocument()
+    expect(topContainer).toHaveClass('justify-between')
+  })
+
+  it('should render main container with margin bottom', () => {
+    const { container } = render(
+      <ProgressIndicator currentIndex={1} totalQuestions={5} />,
+    )
+    const mainContainer = container.querySelector('div.mb-8')
+    expect(mainContainer).toBeInTheDocument()
+  })
+
+  it('should display question label with correct text styling', () => {
+    render(<ProgressIndicator currentIndex={0} totalQuestions={5} />)
+    const label = screen.getByText('Question 1 of 5')
+    expect(label).toHaveClass('text-sm')
+    expect(label).toHaveClass('font-medium')
+    expect(label).toHaveClass('text-slate-400')
+  })
+
+  it('should display percentage with cyan color', () => {
+    render(<ProgressIndicator currentIndex={4} totalQuestions={5} />)
+    const percentage = screen.getByText('100%')
+    expect(percentage).toHaveClass('text-cyan-400')
+  })
+
+  it('should have progress bar with cyan to blue gradient', () => {
+    const { container } = render(
+      <ProgressIndicator currentIndex={3} totalQuestions={10} />,
+    )
+    const progressBar = container.querySelector('div.bg-gradient-to-r')
+    expect(progressBar).toHaveClass('from-cyan-500')
+    expect(progressBar).toHaveClass('to-blue-500')
+  })
+
+  it('should calculate percentage with rounding for 1/3', () => {
+    render(<ProgressIndicator currentIndex={0} totalQuestions={3} />)
+    // (0 + 1) / 3 * 100 = 33.33, rounds to 33
+    expect(screen.getByText('33%')).toBeInTheDocument()
+  })
+
+  it('should handle two question total correctly', () => {
+    render(<ProgressIndicator currentIndex={0} totalQuestions={2} />)
+    expect(screen.getByText('Question 1 of 2')).toBeInTheDocument()
+    expect(screen.getByText('50%')).toBeInTheDocument()
+  })
+
+  it('should display correct percentage for second of two questions', () => {
+    render(<ProgressIndicator currentIndex={1} totalQuestions={2} />)
+    expect(screen.getByText('Question 2 of 2')).toBeInTheDocument()
+    expect(screen.getByText('100%')).toBeInTheDocument()
+  })
 })

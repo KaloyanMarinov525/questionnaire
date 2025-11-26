@@ -9,6 +9,14 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     coverage: {
       provider: 'v8',
+      exclude: [
+        'src/reportWebVitals.ts',
+        'src/main.tsx',
+        'src/routes/**',
+        '**/*.config.js',
+        '**/*.config.ts',
+        'dist/**',
+      ],
       thresholds: {
         statements: 80,
         branches: 80,
