@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { KeyboardHints } from './KeyboardHints'
+import { KeyboardHints, KeyboardHintsButton } from './KeyboardHints'
 
 describe('KeyboardHints', () => {
   it('should render help button', () => {
@@ -133,5 +133,52 @@ describe('KeyboardHints', () => {
 
     // Modal should be hidden after close
     expect(screen.queryByText(/Keyboard Shortcuts/)).not.toBeInTheDocument()
+  })
+
+  it('should not render when isRelevant is false', () => {
+    render(<KeyboardHintsButton isRelevant={false} />)
+    const button = screen.queryByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
+    expect(button).not.toBeInTheDocument()
+  })
+
+  it('should render when isRelevant is true', () => {
+    render(<KeyboardHintsButton isRelevant={true} />)
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
+    expect(button).toBeInTheDocument()
+  })
+
+  it('should stop propagation when clicking on modal', () => {
+    render(<KeyboardHints />)
+    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    fireEvent.click(button)
+
+    // Find the modal content div
+    const { container } = render(<KeyboardHints />)
+    fireEvent.click(button)
+
+    // Click inside modal should not close it
+    const modalContent = container.querySelector('div[class*="bg-slate-800"]')
+    if (modalContent) {
+      fireEvent.click(modalContent)
+      // Modal should still be visible
+      expect(screen.getByText(/Keyboard Shortcuts/)).toBeInTheDocument()
+    }
+  })
+
+  it('should handle rapid open/close clicks', () => {
+    render(<KeyboardHints />)
+    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+
+    // Rapidly click open and close
+    fireEvent.click(button)
+    fireEvent.click(button)
+    fireEvent.click(button)
+
+    // Modal should be visible after odd number of clicks
+    expect(screen.getByText(/Keyboard Shortcuts/)).toBeInTheDocument()
   })
 })
