@@ -324,6 +324,36 @@ You can find out everything you need to know on how to use TanStack Store in the
 
 Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
 
+## Git Branching Strategy: GitHub Flow
+
+This project follows [GitHub Flow](https://www.geeksforgeeks.org/git/branching-strategies-in-git/), a streamlined branching model ideal for smaller teams and continuous deployment.
+
+**Core Concepts:**
+
+- **Main Branch**: Contains stable, production-ready code
+- **Feature Branches**: Created from `main` for new features or bug fixes, then merged back after completion
+
+**Key Advantages:**
+
+- Fast, frequent releases aligned with Agile methodologies
+- Quick feedback loops for identifying and resolving issues
+- Single production version with continuous deployment
+- Well-suited for small teams and web applications
+
+**Important Notes:**
+
+- Resolve merge conflicts before merging to `main`
+- Ensure changes are tested before merging to maintain production stability
+
+For more details on branching strategies, see the [Git Branching Strategies Guide](https://www.geeksforgeeks.org/git/branching-strategies-in-git/).
+
+**Continuous Integration & Deployment:**
+
+- When a PR is opened, the `ci.yml` workflow runs automated checks
+- PRs can only be merged to `main` if CI checks pass successfully
+- Merging to `main` automatically triggers a production deployment
+- This enables fast, reliable releases with minimal manual intervention
+
 ## Learn More
 
 You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
