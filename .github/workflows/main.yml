@@ -54,13 +54,35 @@ jobs:
           name: build-dist
           path: dist/
 
+      - name: Verify artifacts
+        run: |
+          echo "Contents of dist directory:"
+          ls -lah dist/
+          echo ""
+          echo "Checking for index.html:"
+          ls -lah dist/index.html
+          echo ""
+          echo "Contents of index.html:"
+          head -20 dist/index.html
+
       - name: Deploy to Raspberry Pi
         env:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          rm -rf $DEPLOY_PATH
+          echo "DEPLOY_PATH: $DEPLOY_PATH"
+          echo "Removing old deployment at: $DEPLOY_PATH"
+          rm -rf $DEPLOY_PATH || true
+
+          echo "Creating deployment directory"
           mkdir -p $DEPLOY_PATH
+
+          echo "Copying new files"
           cp -r dist/* $DEPLOY_PATH/
 
-          # Restart nginx
+          echo "Verifying deployment"
+          ls -lah $DEPLOY_PATH/
+
+          echo "Restarting nginx"
           sudo systemctl restart nginx
+
+          echo "Deployment complete!"
