@@ -43,14 +43,22 @@ npm run check
 
 ## Git Hooks
 
-This project uses [Husky](https://typicode.github.io/husky/) to automatically run linting and tests before commits are made.
+This project uses [Husky](https://typicode.github.io/husky/) to automatically run quality checks at different stages of the git workflow.
 
 **Pre-commit Hook:**
 
-The pre-commit hook runs the following checks before allowing a commit:
+The pre-commit hook runs linting checks before allowing a commit:
 
 ```bash
-npm run lint && npm run test
+npm run lint
+```
+
+**Pre-push Hook:**
+
+The pre-push hook runs unit tests before allowing code to be pushed to the remote repository:
+
+```bash
+npm run test
 ```
 
 **Setting up Husky:**
@@ -69,13 +77,12 @@ npx husky install
 
 **Bypassing Hooks (Not Recommended):**
 
-If you need to bypass the pre-commit hook for any reason, you can use:
+You can bypass hooks if needed, though this is not recommended:
 
-```bash
-git commit --no-verify
-```
+- Pre-commit: `git commit --no-verify`
+- Pre-push: `git push --no-verify`
 
-However, this should only be used in exceptional cases as it defeats the purpose of the quality checks.
+These should only be used in exceptional cases as they defeat the purpose of the quality checks.
 
 ## T3Env
 
