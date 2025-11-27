@@ -6,6 +6,7 @@ describe('Routes Structure', () => {
   let indexRoute: any
   let categoryRoute: any
   let errorRoute: any
+  let interviewPrepRoute: any
 
   beforeEach(async (): Promise<void> => {
     // Import all route files
@@ -14,6 +15,7 @@ describe('Routes Structure', () => {
     indexRoute = await import('../routes/index.tsx')
     categoryRoute = await import('../routes/categories.$categoryId.tsx')
     errorRoute = await import('../routes/__error.tsx')
+    interviewPrepRoute = await import('../routes/interview-prep.tsx')
   })
 
   it('should have route files', () => {
@@ -22,6 +24,7 @@ describe('Routes Structure', () => {
     expect(indexRoute.Route).toBeDefined()
     expect(categoryRoute.Route).toBeDefined()
     expect(errorRoute.Route).toBeDefined()
+    expect(interviewPrepRoute.Route).toBeDefined()
   })
 
   it('should export Route from root', () => {
@@ -47,6 +50,11 @@ describe('Routes Structure', () => {
   it('should export Route from error page', () => {
     expect(errorRoute.Route).toBeTruthy()
     expect(errorRoute.Route.options).toBeDefined()
+  })
+
+  it('should export Route from interview-prep page', () => {
+    expect(interviewPrepRoute.Route).toBeTruthy()
+    expect(interviewPrepRoute.Route.options).toBeDefined()
   })
 
   it('should have component prop in root route', () => {
@@ -79,6 +87,12 @@ describe('Routes Structure', () => {
     expect(route.options.component).toBeDefined()
   })
 
+  it('should have component prop in interview-prep route', () => {
+    const route = interviewPrepRoute.Route
+    expect(route.options).toBeDefined()
+    expect(route.options.component).toBeDefined()
+  })
+
   it('should have validateSearch in category route', () => {
     const route = categoryRoute.Route
     expect(route.options).toBeDefined()
@@ -107,17 +121,20 @@ describe('Routes Structure', () => {
     const aboutComponent = aboutRoute.Route.options.component
     const categoryComponent = categoryRoute.Route.options.component
     const errorComponent = errorRoute.Route.options.component
+    const interviewPrepComponent = interviewPrepRoute.Route.options.component
 
     expect(rootComponent).toBeDefined()
     expect(indexComponent).toBeDefined()
     expect(aboutComponent).toBeDefined()
     expect(categoryComponent).toBeDefined()
     expect(errorComponent).toBeDefined()
+    expect(interviewPrepComponent).toBeDefined()
 
     expect(typeof rootComponent).toBe('function')
     expect(typeof indexComponent).toBe('function')
     expect(typeof aboutComponent).toBe('function')
     expect(typeof categoryComponent).toBe('function')
     expect(typeof errorComponent).toBe('function')
+    expect(typeof interviewPrepComponent).toBe('function')
   })
 })

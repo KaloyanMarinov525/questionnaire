@@ -1,7 +1,7 @@
 import { Link, useLocation } from '@tanstack/react-router'
 
 import { useState } from 'react'
-import { Home, Info, Menu, X } from 'lucide-react'
+import { Home, Info, Menu, PlayCircle, X } from 'lucide-react'
 import { KeyboardHintsButton } from './KeyboardHints'
 
 const linkBaseStyles =
@@ -71,6 +71,18 @@ export default function Header() {
           </Link>
 
           <Link
+            to="/interview-prep"
+            onClick={() => setIsOpen(false)}
+            className={linkInactiveStyles}
+            activeProps={{
+              className: linkActiveStyles,
+            }}
+          >
+            <PlayCircle size={20} />
+            <span className="font-medium">Interview Prep</span>
+          </Link>
+
+          <Link
             to="/about"
             onClick={() => setIsOpen(false)}
             className={linkInactiveStyles}
@@ -81,10 +93,6 @@ export default function Header() {
             <Info size={20} />
             <span className="font-medium">About</span>
           </Link>
-
-          {/* Demo Links Start */}
-
-          {/* Demo Links End */}
         </nav>
       </aside>
     </>
