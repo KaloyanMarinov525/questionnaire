@@ -41,6 +41,42 @@ npm run format
 npm run check
 ```
 
+## Git Hooks
+
+This project uses [Husky](https://typicode.github.io/husky/) to automatically run linting and tests before commits are made.
+
+**Pre-commit Hook:**
+
+The pre-commit hook runs the following checks before allowing a commit:
+
+```bash
+npm run lint && npm run test
+```
+
+**Setting up Husky:**
+
+If you need to set up Husky hooks after cloning the repository, run:
+
+```bash
+npm install
+```
+
+Husky will be automatically installed and configured via the `prepare` script in `package.json`. If hooks are not working, you can manually initialize them:
+
+```bash
+npx husky install
+```
+
+**Bypassing Hooks (Not Recommended):**
+
+If you need to bypass the pre-commit hook for any reason, you can use:
+
+```bash
+git commit --no-verify
+```
+
+However, this should only be used in exceptional cases as it defeats the purpose of the quality checks.
+
 ## T3Env
 
 T3Env can be used to add type safety to environment variables.

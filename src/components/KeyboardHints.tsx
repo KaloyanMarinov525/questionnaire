@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { X, HelpCircle } from 'lucide-react'
+import { HelpCircle, X } from 'lucide-react'
 
 export function KeyboardHintsButton({ isRelevant = true }: { isRelevant?: boolean }) {
   const [isVisible, setIsVisible] = useState(false)
