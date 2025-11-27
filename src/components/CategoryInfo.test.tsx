@@ -93,7 +93,7 @@ describe('CategoryInfo', () => {
     )
     const spans = container.querySelectorAll('span.font-semibold')
     const questionCountSpan = Array.from(spans).find((span) =>
-      span.textContent?.includes('25'),
+      span.textContent.includes('25'),
     )
     expect(questionCountSpan).toBeInTheDocument()
   })
