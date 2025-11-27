@@ -19,6 +19,7 @@ vi.mock('lucide-react', () => ({
   X: () => <span>X</span>,
   Home: () => <span>Home</span>,
   Info: () => <span>Info</span>,
+  PlayCircle: () => <span>PlayCircle</span>,
   HelpCircle: () => <span>HelpCircle</span>,
 }))
 

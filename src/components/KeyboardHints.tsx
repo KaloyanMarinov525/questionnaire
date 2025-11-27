@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import { HelpCircle, X } from 'lucide-react'
 
-export function KeyboardHintsButton({ isRelevant = true }: { isRelevant?: boolean }) {
+export function KeyboardHintsButton({
+  isRelevant = true,
+}: {
+  isRelevant?: boolean
+}) {
   const [isVisible, setIsVisible] = useState(false)
 
   if (!isRelevant) return null
@@ -34,7 +38,9 @@ export function KeyboardHintsButton({ isRelevant = true }: { isRelevant?: boolea
               <X size={20} />
             </button>
             <div className="mb-6 pr-8">
-              <p className="font-semibold text-slate-200 text-lg">⌨️ Keyboard Shortcuts</p>
+              <p className="font-semibold text-slate-200 text-lg">
+                ⌨️ Keyboard Shortcuts
+              </p>
             </div>
             <ul className="space-y-2 text-xs">
               <li className="flex items-center">

@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as InterviewPrepRouteImport } from './routes/interview-prep'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as _errorRouteImport } from './routes/__error'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CategoriesCategoryIdRouteImport } from './routes/categories.$categoryId'
 
+const InterviewPrepRoute = InterviewPrepRouteImport.update({
+  id: '/interview-prep',
+  path: '/interview-prep',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -37,11 +43,13 @@ const CategoriesCategoryIdRoute = CategoriesCategoryIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/interview-prep': typeof InterviewPrepRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/interview-prep': typeof InterviewPrepRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
 }
 export interface FileRoutesById {
@@ -49,25 +57,40 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/__error': typeof _errorRoute
   '/about': typeof AboutRoute
+  '/interview-prep': typeof InterviewPrepRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/categories/$categoryId'
+  fullPaths: '/' | '/about' | '/interview-prep' | '/categories/$categoryId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/categories/$categoryId'
-  id: '__root__' | '/' | '/__error' | '/about' | '/categories/$categoryId'
+  to: '/' | '/about' | '/interview-prep' | '/categories/$categoryId'
+  id:
+    | '__root__'
+    | '/'
+    | '/__error'
+    | '/about'
+    | '/interview-prep'
+    | '/categories/$categoryId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   _errorRoute: typeof _errorRoute
   AboutRoute: typeof AboutRoute
+  InterviewPrepRoute: typeof InterviewPrepRoute
   CategoriesCategoryIdRoute: typeof CategoriesCategoryIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/interview-prep': {
+      id: '/interview-prep'
+      path: '/interview-prep'
+      fullPath: '/interview-prep'
+      preLoaderRoute: typeof InterviewPrepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -103,6 +126,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   _errorRoute: _errorRoute,
   AboutRoute: AboutRoute,
+  InterviewPrepRoute: InterviewPrepRoute,
   CategoriesCategoryIdRoute: CategoriesCategoryIdRoute,
 }
 export const routeTree = rootRouteImport

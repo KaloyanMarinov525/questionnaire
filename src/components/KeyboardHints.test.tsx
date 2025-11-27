@@ -5,74 +5,98 @@ import { KeyboardHints, KeyboardHintsButton } from './KeyboardHints'
 describe('KeyboardHints', () => {
   it('should render help button', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     expect(button).toBeInTheDocument()
   })
 
   it('should toggle hints panel on button click', () => {
     const { container } = render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
 
     // Initially modal should not exist
-    let modal = container.querySelector('[class*="flex"][class*="items-center"][class*="justify-center"]')
+    let modal = container.querySelector(
+      '[class*="flex"][class*="items-center"][class*="justify-center"]',
+    )
     expect(modal).not.toBeInTheDocument()
 
     // Click to show
     fireEvent.click(button)
-    modal = container.querySelector('[class*="flex"][class*="items-center"][class*="justify-center"]')
+    modal = container.querySelector(
+      '[class*="flex"][class*="items-center"][class*="justify-center"]',
+    )
     expect(modal).toBeInTheDocument()
 
     // Click to hide
     fireEvent.click(button)
-    modal = container.querySelector('[class*="flex"][class*="items-center"][class*="justify-center"]')
+    modal = container.querySelector(
+      '[class*="flex"][class*="items-center"][class*="justify-center"]',
+    )
     expect(modal).not.toBeInTheDocument()
   })
 
   it('should render keyboard hints title when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     expect(screen.getByText(/Keyboard Shortcuts/)).toBeInTheDocument()
   })
 
   it('should display left arrow shortcut when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     expect(screen.getByText('Previous question')).toBeInTheDocument()
   })
 
   it('should display right arrow shortcut when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     expect(screen.getByText('Next question')).toBeInTheDocument()
   })
 
   it('should display up arrow shortcut when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     expect(screen.getByText('Hide answer')).toBeInTheDocument()
   })
 
   it('should display down arrow shortcut when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     expect(screen.getByText('Show answer')).toBeInTheDocument()
   })
 
   it('should display keyboard emoji when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     expect(screen.getByText(/⌨️/)).toBeInTheDocument()
   })
 
   it('should display all arrow symbols when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     expect(screen.getByText('←')).toBeInTheDocument()
     expect(screen.getByText('→')).toBeInTheDocument()
@@ -82,15 +106,21 @@ describe('KeyboardHints', () => {
 
   it('should have fixed positioning when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
-    const fixedElements = screen.getByRole('button', { name: /Close keyboard hints/i }).closest('[class*="fixed"]')
+    const fixedElements = screen
+      .getByRole('button', { name: /Close keyboard hints/i })
+      .closest('[class*="fixed"]')
     expect(fixedElements).toBeInTheDocument()
   })
 
   it('should render all hints in a list when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     const listItems = screen.getAllByRole('listitem')
     expect(listItems).toHaveLength(4)
@@ -98,7 +128,9 @@ describe('KeyboardHints', () => {
 
   it('should have proper styling for keyboard keys when visible', () => {
     const { container } = render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
     const keyElements = container.querySelectorAll('span.font-mono')
     expect(keyElements.length).toBeGreaterThanOrEqual(4)
@@ -106,29 +138,39 @@ describe('KeyboardHints', () => {
 
   it('should be hidden by default', () => {
     const { container } = render(<KeyboardHints />)
-    const modal = container.querySelector('[class*="flex"][class*="items-center"][class*="justify-center"]')
+    const modal = container.querySelector(
+      '[class*="flex"][class*="items-center"][class*="justify-center"]',
+    )
     expect(modal).not.toBeInTheDocument()
   })
 
   it('should have close button when visible', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
-    const closeButton = screen.getByRole('button', { name: /Close keyboard hints/i })
+    const closeButton = screen.getByRole('button', {
+      name: /Close keyboard hints/i,
+    })
     expect(closeButton).toBeInTheDocument()
     expect(closeButton).toHaveAttribute('aria-label', 'Close keyboard hints')
   })
 
   it('should close when clicking outside modal', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
 
     // Modal should be visible
     expect(screen.getByText(/Keyboard Shortcuts/)).toBeInTheDocument()
 
     // Verify it can be closed
-    const closeButton = screen.getByRole('button', { name: /Close keyboard hints/i })
+    const closeButton = screen.getByRole('button', {
+      name: /Close keyboard hints/i,
+    })
     fireEvent.click(closeButton)
 
     // Modal should be hidden after close
@@ -153,7 +195,9 @@ describe('KeyboardHints', () => {
 
   it('should stop propagation when clicking on modal', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
     fireEvent.click(button)
 
     // Find the modal content div
@@ -171,7 +215,9 @@ describe('KeyboardHints', () => {
 
   it('should handle rapid open/close clicks', () => {
     render(<KeyboardHints />)
-    const button = screen.getByRole('button', { name: /Show keyboard shortcuts/i })
+    const button = screen.getByRole('button', {
+      name: /Show keyboard shortcuts/i,
+    })
 
     // Rapidly click open and close
     fireEvent.click(button)

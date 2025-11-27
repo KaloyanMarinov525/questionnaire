@@ -111,6 +111,13 @@ pnpx shadcn@latest add button
 
 This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
 
+**Available Routes:**
+
+- `/` - Home page with interview questions by category
+- `/about` - About the collection and how to use the app
+- `/interview-prep` - Interview preparation resources and techniques
+- `/categories/:categoryId` - View questions in a specific category
+
 ### Adding A Route
 
 To add a new route to your application just add another a new file in the `./src/routes` directory.
