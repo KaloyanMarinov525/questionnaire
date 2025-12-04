@@ -10,10 +10,13 @@ Example (no useCallback / useMemo needed):
 \`\`\`javascript
 const Child = React.memo(({ value }: { value: number }) => {
   console.log("Child rendered");
+
   return <div>{value}</div>;
 });
+
 function Parent() {
   const [count, React.useState(0);
+
   return (
     <div>
       <button onClick={() => setCount(c => c + 1)}>Increment</button>

@@ -10,16 +10,20 @@ TypeScript Example:
 \`\`\`typescript
 abstract class Animal {
   abstract makeSound(): void; // must be implemented in subclasses
+
   move(): void {
     console.log("Moving...");
   }
 }
+
 class Dog extends Animal {
   makeSound(): void {
     console.log("Woof!");
   }
 }
+
 const dog = new Dog();
+
 dog.makeSound(); // Woof!
 dog.move(); // Moving...
 \`\`\``,

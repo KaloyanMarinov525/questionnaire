@@ -9,12 +9,17 @@ export const hoisting: Question = {
 Example:
 \`\`\`javascript
 console.log(a); // undefined
+
 var a = 5;
+
 foo(); // works
+
 function foo() {
   console.log("Hello");
 }
+
 console.log(b); // ❌ ReferenceError
+
 let b = 10;
 \`\`\``,
   tags: ['Hoisting', 'JavaScript', 'Variable Declaration'],
