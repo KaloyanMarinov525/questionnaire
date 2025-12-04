@@ -8,9 +8,17 @@ export const call_stack_pop: Question = {
 
 Example:
 \`\`\`javascript
-function a() { console.log("a"); }
-function b() { a(); console.log("b"); }
+const a = () => {
+  console.log("a");
+};
+
+const b = () => {
+  a();
+  console.log("b");
+};
+
 b();
+
 // Order: a → b
 \`\`\`
 
@@ -26,9 +34,17 @@ There are two main queues:
 Example:
 \`\`\`javascript
 console.log("start");
-setTimeout(() => console.log("timeout"), 0);
-Promise.resolve().then(() => console.log("promise"));
+
+setTimeout(() => {
+  console.log("timeout");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("promise");
+});
+
 console.log("end");
+
 // Output: start → end → promise → timeout
 \`\`\``,
   tags: ['Call Stack', 'Queue', 'Event Loop'],

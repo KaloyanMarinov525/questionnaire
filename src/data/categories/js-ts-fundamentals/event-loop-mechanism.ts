@@ -15,9 +15,17 @@ export const event_loop_mechanism: Question = {
 
 \`\`\`javascript
 console.log("start");
-setTimeout(() => console.log("timeout"), 0);
-Promise.resolve().then(() => console.log("promise"));
+
+setTimeout(() => {
+  console.log("timeout");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("promise");
+});
+
 console.log("end");
+
 // Output: start → end → promise → timeout
 \`\`\``,
   tags: ['Event Loop', 'Execution Order', 'Microtasks'],

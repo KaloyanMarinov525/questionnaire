@@ -13,8 +13,13 @@ export const single_thread: Question = {
 Example:
 \`\`\`javascript
 console.log("start");
-setTimeout(() => console.log("timeout"), 0);
+
+setTimeout(() => {
+  console.log("timeout");
+}, 0);
+
 console.log("end");
+
 // Output: start → end → timeout
 \`\`\`
 

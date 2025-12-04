@@ -8,9 +8,17 @@ export const call_stack_push: Question = {
 
 Example:
 \`\`\`javascript
-function a() { console.log("a"); }
-function b() { a(); console.log("b"); }
+const a = () => {
+  console.log("a");
+};
+
+const b = () => {
+  a();
+  console.log("b");
+};
+
 b();
+
 // Order: a → b
 \`\`\``,
   tags: ['Call Stack', 'Execution', 'Stack'],
