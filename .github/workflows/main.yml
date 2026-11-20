@@ -2,22 +2,23 @@ name: Deploy to Production
 
 run-name: Deploy ${{ github.ref_name }} by ${{ github.actor }}
 
+# Tests, then builds the site into an nginx image on GitHub's runner and pushes it to GHCR.
+# The self-hosted x64 server pulls that image and restarts the container (questionnaire.kalstack.com).
 on:
   push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Deployment environment'
-        required: true
-        default: 'production'
-        type: choice
-        options:
-          - production
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
 
 jobs:
   Build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -34,33 +35,52 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Build application
-        run: npm run build
+      - uses: docker/setup-buildx-action@v3
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+      - uses: docker/login-action@v3
         with:
-          name: build-dist
-          path: dist/
-          retention-days: 1
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set image name
+        run: echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          labels: org.opencontainers.image.source=https://github.com/${{ github.repository }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   Deploy:
     needs: Build
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux, x64]
+    permissions:
+      contents: read
+      packages: read
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
+      - name: Check out deploy files
+        uses: actions/checkout@v4
         with:
-          name: build-dist
-          path: dist/
+          sparse-checkout: deploy/
 
-      - name: Deploy to Raspberry Pi
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy
         env:
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          IMAGE_TAG: sha-${{ github.sha }}
         run: |
-          rm -rf $DEPLOY_PATH
-          mkdir -p $DEPLOY_PATH
-          cp -r dist/* $DEPLOY_PATH/
-
-          # Restart nginx
-          sudo systemctl restart nginx
+          docker compose -p questionnaire -f deploy/docker-compose.yml pull
+          docker compose -p questionnaire -f deploy/docker-compose.yml up -d
+          docker image prune -f

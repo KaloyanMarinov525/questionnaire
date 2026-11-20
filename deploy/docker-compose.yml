@@ -1,0 +1,8 @@
+# Questionnaire static site, served by nginx. Deployed by .github/workflows/main.yml.
+# Cloudflare Tunnel routes questionnaire.kalstack.com → http://localhost:4300
+services:
+  web:
+    image: ghcr.io/kaloyanmarinov525/questionnaire:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:4300:80'
