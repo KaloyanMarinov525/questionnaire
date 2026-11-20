@@ -9,12 +9,16 @@ export const react_memo: Question = {
 Example:
 \`\`\`javascript
 import React, { useState, memo } from "react";
+
 const Child = memo(({ value }: { value: number }) => {
   console.log("Child rendered");
+
   return <div>Value: {value}</div>;
 });
+
 export default function Parent() {
   const [count, setCount] = useState(0);
+
   return (
     <div>
       <button onClick={() => setCount(c => c + 1)}>Increment</button>

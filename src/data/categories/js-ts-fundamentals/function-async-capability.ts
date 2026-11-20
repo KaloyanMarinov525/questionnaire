@@ -11,6 +11,7 @@ Example:
 async function add(a, b) {
   return a + b; // actually returns Promise<number>
 }
+
 add(2, 3).then(result => console.log(result)); // 5
 \`\`\`
 
